@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter } from "react-router-dom";
+import AuthContextProvider from "./context/Auth/AuthState";
+import App from "./App";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+
+// import data from "./utils/data";
+// import { db } from "./config/firebase";
+// import { addDoc, collection } from "firebase/firestore";
+// const coll=collection(db,"products")
+// const promise=data.map((pro)=>addDoc(coll,pro));
+// await Promise.all(promise);
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <App />
+    <AuthContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </AuthContextProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
